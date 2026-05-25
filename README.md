@@ -101,7 +101,8 @@ src/
 │
 └── test/
     └── java/                          # Pruebas unitarias de entidades y servicios
-
+```
+--- 
 ## 🛠️ Tecnologías utilizadas
 
 | Tecnología | Propósito |
