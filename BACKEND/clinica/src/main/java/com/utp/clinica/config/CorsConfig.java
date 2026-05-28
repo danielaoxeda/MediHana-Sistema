@@ -19,6 +19,18 @@ public class CorsConfig {
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);
+
+                // Permitir CORS para Swagger UI
+                registry.addMapping("/swagger-ui/**")
+                        .allowedOrigins("http://localhost:5173", "http://localhost:3000")
+                        .allowedMethods("GET", "OPTIONS")
+                        .allowedHeaders("*");
+
+                // Permitir CORS para OpenAPI docs
+                registry.addMapping("/v3/api-docs/**")
+                        .allowedOrigins("http://localhost:5173", "http://localhost:3000")
+                        .allowedMethods("GET", "OPTIONS")
+                        .allowedHeaders("*");
             }
         };
     }

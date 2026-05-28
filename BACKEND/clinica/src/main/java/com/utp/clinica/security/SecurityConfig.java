@@ -28,14 +28,19 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.configure(http))
                 .authorizeHttpRequests(auth -> auth
-                .requestMatchers(
-                    "/api/auth/**",
-                    "/swagger-ui/**",
-                    "/swagger-ui.html",
-                    "/v3/api-docs/**",
-                    "/v3/api-docs",
-                    "/webjars/**"
-                ).permitAll() // Login, Swagger y OpenAPI quedan públicos
+                        .requestMatchers(
+                                "/api/auth/**",
+                                "/swagger-ui/**",
+                                "/swagger-ui.html",
+                                "/swagger-ui/",
+                                "/swagger-ui/index.html",
+                                "/v3/api-docs/**",
+                                "/v3/api-docs",
+                                "/v3/api-docs.yaml",
+                                "/webjars/**",
+                                "/swagger-resources/**",
+                                "/swagger-resources"
+                        ).permitAll() // Login, Swagger y OpenAPI quedan públicos
                         .anyRequest().authenticated() // AHORA SÍ BLOQUEAMOS TODO LO DEMÁS
                 )
                 // que no guarde sesiones en memoria (es una API REST pura)
