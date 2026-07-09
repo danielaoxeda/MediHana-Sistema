@@ -20,9 +20,19 @@ public class FacturacionController {
     private FacturacionService facturacionService;
 
     //  Endpoints de Facturas
+    @GetMapping
+    public ResponseEntity<List<Factura>> listarTodas() {
+        return ResponseEntity.ok(facturacionService.obtenerTodasLasFacturas());
+    }
+
     @GetMapping("/pendientes")
     public ResponseEntity<List<Factura>> listarFacturasPendientes() {
         return ResponseEntity.ok(facturacionService.obtenerFacturasPendientes());
+    }
+
+    @GetMapping("/pagos")
+    public ResponseEntity<List<Pago>> listarTodosLosPagos() {
+        return ResponseEntity.ok(facturacionService.obtenerTodosLosPagos());
     }
 
     @PostMapping("/emitir")

@@ -51,6 +51,14 @@ public class FacturacionService {
         return facturaRepository.findByEstadoPago(0); //  busca facturas con estado 0 (Pendiente)
     }
 
+    public List<Factura> obtenerTodasLasFacturas() {
+        return facturaRepository.findAll();
+    }
+
+    public List<Pago> obtenerTodosLosPagos() {
+        return pagoRepository.findAll();
+    }
+
     //  PAGOS
     @Transactional
     public Pago registrarPagoInterno(PagoRequestDTO request) {
