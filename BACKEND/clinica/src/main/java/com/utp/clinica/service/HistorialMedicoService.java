@@ -49,4 +49,8 @@ public class HistorialMedicoService {
     public List<HistorialMedico> obtenerPorPaciente(Integer idPaciente) {
         return historialRepository.findByPacienteId(idPaciente);
     }
+
+    public List<HistorialMedico> obtenerTodos() {
+        return historialRepository.findAll();
+    }
 }

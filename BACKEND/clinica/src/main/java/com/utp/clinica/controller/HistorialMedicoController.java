@@ -22,6 +22,11 @@ public class HistorialMedicoController {
         return ResponseEntity.ok(historialService.obtenerPorPaciente(idPaciente));
     }
 
+    @GetMapping
+    public ResponseEntity<List<HistorialMedico>> listarTodos() {
+        return ResponseEntity.ok(historialService.obtenerTodos());
+    }
+
     @PostMapping
     public ResponseEntity<?> registrarHistorial(@RequestBody HistorialMedicoRequestDTO request) {
         try {
