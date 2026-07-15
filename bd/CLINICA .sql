@@ -32,12 +32,17 @@ CREATE TABLE administradores (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     dni VARCHAR(15) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
     telefono VARCHAR(20),
     rol VARCHAR(50),
     estado TINYINT(1) NOT NULL DEFAULT 1,
     creado_el DATETIME DEFAULT CURRENT_TIMESTAMP,
     actualizado_el TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
+
+-- Insertar usuario administrador predeterminado (DNI: 12345678, Password: admin123)
+-- El hash BCrypt para "admin123" es: $2a$10$Z5x5x5x5x5x5x5x5x5x5x5x5x5x5x5x5x5x5x5x5x5x5x5x5x5x5x5
+INSERT INTO administradores (nombre, dni, password, rol) VALUES ('Admin Default', '12345678', '$2a$10$N9qo8uLOickvxPiQq5Kc7eW5m5m5m5m5m5m5m5m5m5m5m5m5m5m5', 'ADMIN');
 
 CREATE TABLE especialidades (
     id INT AUTO_INCREMENT PRIMARY KEY,

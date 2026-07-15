@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface IConsultorioRepository extends JpaRepository<Consultorio, Integer> {
     List<Consultorio> findByEstado(Integer estado); // pa buscar los consultorios disponibles (estado = 1)
+    boolean existsByPiso(Integer piso);
 }

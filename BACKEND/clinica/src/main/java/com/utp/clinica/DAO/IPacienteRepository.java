@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface IPacienteRepository extends JpaRepository<Paciente, Integer> {
 
     Optional<Paciente> findByDni(String dni);
+    boolean existsByDni(String dni);
 }

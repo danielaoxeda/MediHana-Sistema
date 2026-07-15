@@ -8,4 +8,5 @@ import java.util.Optional;
 @Repository
 public interface IMedicoRepository extends JpaRepository<Medico, Integer> {
     Optional<Medico> findByDni(String dni);
+    boolean existsByDni(String dni);
 }

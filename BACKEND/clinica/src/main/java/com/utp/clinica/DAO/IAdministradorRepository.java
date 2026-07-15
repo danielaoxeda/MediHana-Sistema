@@ -9,4 +9,5 @@ import java.util.Optional;
 @Repository
 public interface IAdministradorRepository extends JpaRepository<Administrador, Integer> {
     Optional<Administrador> findByDni(String dni);
+    boolean existsByDni(String dni);
 }

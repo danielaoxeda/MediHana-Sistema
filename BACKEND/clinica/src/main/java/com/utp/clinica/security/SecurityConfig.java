@@ -13,8 +13,8 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Autowired
-    private JwtRequestFilter jwtRequestFilter;
+//    @Autowired
+//    private JwtRequestFilter jwtRequestFilter;
 
     // el encriptador como un bean para poder usarlo en todo
     @Bean
@@ -22,35 +22,34 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf(csrf -> csrf.disable())
-                .cors(cors -> cors.configure(http))
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
-                                "/api/auth/**",
-                                "/swagger-ui/**",
-                                "/swagger-ui.html",
-                                "/swagger-ui/",
-                                "/swagger-ui/index.html",
-                                "/v3/api-docs/**",
-                                "/v3/api-docs",
-                                "/v3/api-docs.yaml",
-                                "/webjars/**",
-                                "/swagger-resources/**",
-                                "/swagger-resources"
-                        ).permitAll() // Login, Swagger y OpenAPI quedan públicos
-                        .anyRequest().authenticated() // AHORA SÍ BLOQUEAMOS TODO LO DEMÁS
-                )
-                // que no guarde sesiones en memoria (es una API REST pura)
-                .sessionManagement(sess -> sess.sessionCreationPolicy(org.springframework.security.config.http.SessionCreationPolicy.STATELESS))
-                .addFilterBefore(jwtRequestFilter, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class);
-
-        return http.build();
-    }
+//     @Bean
+//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+//        http
+//                .csrf(csrf -> csrf.disable())
+//                .cors(cors -> cors.configure(http))
+//                .authorizeHttpRequests(auth -> auth
+//                        .requestMatchers(
+//                                "/api/auth/**",
+//                                "/swagger-ui/**",
+//                                "/swagger-ui.html",
+//                                "/swagger-ui/",
+//                                "/swagger-ui/index.html",
+//                                "/v3/api-docs/**",
+//                                "/v3/api-docs",
+//                                "/v3/api-docs.yaml",
+//                                "/webjars/**",
+//                                "/swagger-resources/**",
+//                                "/swagger-resources"
+//                        ).permitAll() // Login, Swagger y OpenAPI quedan públicos
+//                        .anyRequest().authenticated() // AHORA SÍ BLOQUEAMOS TODO LO DEMÁS
+//                )
+//                // que no guarde sesiones en memoria (es una API REST pura)
+//                .sessionManagement(sess -> sess.sessionCreationPolicy(org.springframework.security.config.http.SessionCreationPolicy.STATELESS))
+//                .addFilterBefore(jwtRequestFilter, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.class);
+//
+//        return http.build();
+//    }
      //para hacer pruebas
-    /*
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -61,5 +60,5 @@ public class SecurityConfig {
                 );
 
         return http.build();
-    }*/
+    }
 }
