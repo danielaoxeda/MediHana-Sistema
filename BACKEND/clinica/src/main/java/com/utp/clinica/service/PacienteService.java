@@ -15,7 +15,8 @@ public class PacienteService {
     private IPacienteRepository pacienteRepository;
 
     public List<Paciente> obtenerTodos() {
-        return pacienteRepository.findAll();
+        // Solo retorna pacientes activos (estado = 1), los dados de baja (estado = 0) no se listan
+        return pacienteRepository.findByEstado(1);
     }
 
     public Optional<Paciente> buscarPorDni(String dni) {
